@@ -1,5 +1,6 @@
-import { useEffect, useState, useRef, useContext } from "react";
+import { useRef, useContext } from "react";
 import { useRouter } from "next/router";
+
 import Image from "next/image";
 
 import Link from "next/link";
@@ -73,7 +74,7 @@ function Home({ pokemonList }) {
             {optionsDisplay}
           </datalist>
           <button className={styles["search-button"]}>
-            Engage Popularity Traker
+            Engage Popularity Tracker
           </button>
         </form>
         <Image
@@ -96,7 +97,9 @@ export async function getStaticProps() {
     const pokemonList = pokemonData.results;
 
     return {
-      props: { pokemonList },
+      props: {
+        pokemonList,
+      },
     };
   } catch (error) {
     console.log(error);
