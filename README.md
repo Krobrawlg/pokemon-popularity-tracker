@@ -9,8 +9,8 @@ With this app, you can see which Pokemon people are talking about on Twitter. It
 
 Tools Used:
 
--Next JS
--Pokemon API
--Twitter API
+- Next JS
+- Pokemon API
+- Twitter API
 
 
