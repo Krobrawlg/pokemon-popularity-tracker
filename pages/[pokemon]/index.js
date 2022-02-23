@@ -10,7 +10,7 @@ import PokeContext from "../../context/poke-context";
 function PokemonPage(props) {
   const router = useRouter();
 
-  console.log(props.tweetCountData);
+  // console.log(props.tweetCountData);
 
   const name = router.query.pokemonName;
   const url = router.query.url;
@@ -19,12 +19,53 @@ function PokemonPage(props) {
 
   const pokeCtx = useContext(PokeContext);
 
-  const [tweetCounts, setTweetCounts] = useState([]);
+  const [tweetData, setTweetData] = useState([]);
+  const [tweetCount, setTweetCount] = useState(null);
 
   const [imageSrc, setImageSrc] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    // function findTweetTotal(array) {
+    //   const countArray = array.map((tweet) => {
+    //     tweet.count;
+    //   });
+    //   const tweetTotal = countArray.reduce((prev, curr) => {
+    //     prev + curr;
+    //   });
+    //   console.log(`tweet total ${countArray}`);
+    //   setTweetCount(tweetTotal);
+    // }
+
+    function formatTweetData() {
+      let tweetTotal = 0;
+      const tweetArray = [];
+      props.tweetCountData.forEach((tweet) => {
+        tweetArray.push({
+          time: tweet.end,
+          count: tweet.tweet_count,
+        });
+        tweetTotal += tweet.tweet_count;
+        return tweetArray, tweetTotal;
+      });
+      setTweetData(tweetArray);
+      setTweetCount(tweetTotal);
+      console.log(tweetTotal);
+
+      // tweetArray.forEach((tweet) => {
+      //   console.log(`count ${tweet.count}`);
+      // });
+    }
+    formatTweetData();
+  }, [props.tweetCountData]);
+
+  // useEffect(() => {
+  //   tweetData.forEach((tweet) => {
+  //     console.log(`tweet data ${tweet.time}`);
+  //   });
+  // }, [tweetData]);
+
+  useEffect(() => {
+    async function fetchPicture() {
       try {
         console.log(`url ${url}`);
         const response = await fetch(url);
@@ -34,8 +75,8 @@ function PokemonPage(props) {
       } catch (err) {
         console.log(err);
       }
-    };
-    fetchData();
+    }
+    fetchPicture();
   }, [url]);
 
   // async function getHot() {
@@ -46,7 +87,8 @@ function PokemonPage(props) {
   return (
     <>
       <h1>{name}</h1>
-      <button>How hot?</button>
+      <h2>How hot?</h2>
+      {tweetCount && <h3>{tweetCount} tweets in the past week.</h3>}
       {imageSrc && (
         <Image
           src={imageSrc}
@@ -69,9 +111,14 @@ export async function getServerSideProps(context) {
     const client = new TwitterApi(`${process.env.TWITTER_BEARER_TOKEN}`);
     const pokeTweets = await client.v2.tweetCountRecent(pokeName);
 
+    // const tweetArray = pokeTweets.map((tweet) => ({
+    //   time: tweet.end,
+    //   count: tweet.tweet_count,
+    // }));
+
     return {
       props: {
-        tweetCountData: pokeTweets,
+        tweetCountData: pokeTweets.data,
       },
     };
   } catch (err) {
