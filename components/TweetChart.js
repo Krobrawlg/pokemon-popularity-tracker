@@ -3,13 +3,13 @@ import * as d3 from "d3";
 
 import styles from "../styles/TweetChart.module.css";
 
-function TweetChart(props) {
-  const [data] = useState([props.data]);
+function TweetChart({ data }) {
+  const [chartData] = useState([data]);
   const svgRef = useRef();
 
   useEffect(() => {
-    const w = 400;
-    const h = 400;
+    const w = "80vw";
+    const h = "50vh";
     const svg = d3
       .select(svgRef.current)
       .attr("width", w)
@@ -18,8 +18,12 @@ function TweetChart(props) {
       .style("overflow", "visible");
 
     const xScale = d3
-      .scaleLinear()
-      .domain([0, data.length - 1])
+      .scaleTime()
+      .domain(
+        d3.extent(chartData, function (d) {
+          return d.time;
+        })
+      )
       .range([0, w]);
 
     const yScale = d3.scaleLinear().domain([0, h]).range([h, 0]);

@@ -1,10 +1,10 @@
-import { useRef, useContext } from "react";
+import { useRef, useContext, useEffect, useCallback } from "react";
 import { useRouter } from "next/router";
 
 import Image from "next/image";
 
 import Link from "next/link";
-import PokeContext from "../context/poke-context";
+import PokeContext, { PokeContextProvider } from "../context/poke-context";
 
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
@@ -18,6 +18,8 @@ function Home({ pokemonList }) {
       (pokemon.name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1))
   );
 
+  const pokeCtx = useContext(PokeContext);
+
   let optionsDisplay = filteredList.map((pokemon, index) => (
     <option key={index} value={pokemon.name}>
       {pokemon.name}
@@ -28,12 +30,10 @@ function Home({ pokemonList }) {
 
   const router = useRouter();
 
-  const pokeCtx = useContext(PokeContext);
-
   function openPokemonPage(event) {
     event.preventDefault();
     const pokemonName = pokeSelection.current.value;
-    console.log(pokemonName);
+    pokeCtx.setPokeList(filteredList);
 
     let url;
     filteredList.forEach((pokemon) => {
@@ -58,9 +58,9 @@ function Home({ pokemonList }) {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Pokemon Popularity Tracker</h1>
-        <h2 className={styles.subtitle}>{`Who's Hot and Who Isn't?`}</h2>
 
         <form className={styles["pokemon-selector"]} onSubmit={openPokemonPage}>
+          <h2 className={styles.subtitle}>{`Who's Hot and Who Isn't?`}</h2>
           <label htmlFor="pokemon-select" className={styles["selector-label"]}>
             Pick a Pocket Monster
           </label>
@@ -76,13 +76,13 @@ function Home({ pokemonList }) {
           <button className={styles["search-button"]}>
             Engage Popularity Tracker
           </button>
+          <Image
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png"
+            alt="ditto sprite"
+            height={100}
+            width={100}
+          />
         </form>
-        <Image
-          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png"
-          alt="ditto sprite"
-          height={100}
-          width={100}
-        />
       </main>
 
       <footer className={styles.footer}></footer>

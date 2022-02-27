@@ -1,5 +1,5 @@
 .container {
-  padding: 0 2rem;
+  padding: 0;
 }
 
 .main {
@@ -10,30 +10,61 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f7f2d4;
+  background-color: #ffdae8;
+  margin: 0;
 }
 
 .title {
-  color: #fddc22;
+  color: #008581;
   font-size: 60px;
-  text-shadow: 0 1px 0px #0b08bd, 1px 0 0px #3b3ee0, 1px 2px 1px #0b08bd,
-    2px 1px 1px #3b3ee0, 2px 3px 2px #0b08bd, 3px 2px 2px #3b3ee0,
-    3px 4px 2px #0b08bd, 4px 3px 3px #3b3ee0, 4px 5px 3px #0b08bd,
-    5px 4px 2px #3b3ee0, 5px 6px 2px #0b08bd, 6px 5px 2px #3b3ee0,
-    6px 7px 1px #0b08bd, 7px 6px 1px #3b3ee0, 7px 8px 0px #0b08bd,
-    8px 7px 0px #3b3ee0;
+  text-shadow: 0 1px 0px #e4509a, 1px 0 0px #7bc9ec, 1px 2px 1px #e4509a,
+    2px 1px 1px #7bc9ec, 2px 3px 2px #e4509a, 3px 2px 2px #7bc9ec,
+    3px 4px 2px #e4509a, 4px 3px 3px #7bc9ec, 4px 5px 3px #e4509a,
+    5px 4px 2px #7bc9ec, 5px 6px 2px #e4509a, 6px 5px 2px #7bc9ec,
+    6px 7px 1px #e4509a, 7px 6px 1px #7bc9ec, 7px 8px 0px #e4509a,
+    8px 7px 0px #7bc9ec;
 }
 
 .subtitle {
-  color: #091d34;
+  font-size: xx-large;
 }
 
 .pokemon-selector {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #96e4b0;
+  width: 50rem;
+  /* border: solid #008581; */
+  border-width: 1em;
+  padding: 1em;
+  border-radius: 15px;
+  color: #008581;
+  font-weight: bold;
+  font-size: x-large;
 }
 
 .input {
+  margin-top: 2em;
+  margin-bottom: 2em;
   width: 20rem;
+  height: 2rem;
+  font-size: large;
+}
+
+.search-button {
+  background-color: #e4509a;
+  color: #ffdae8;
+  padding: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: large;
+  border: none;
+}
+
+.search-button:hover {
+  color: #e4509a;
+  background-color: #ffdae8;
+  outline-color: solid #e4509a;
+  outline: 5px;
 }

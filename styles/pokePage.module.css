@@ -1,0 +1,96 @@
+.split {
+  position: fixed;
+  height: 100%;
+  width: 50%;
+  background-color: #ffdae8;
+  color: #008581;
+  font-weight: bold;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+  background-color: #c6f1d4;
+  top: 0;
+}
+.centered {
+  text-align: center;
+}
+
+.h1 {
+  font-size: 2rem;
+}
+
+.h1-right {
+  color: #e4509a;
+}
+
+.h2 {
+  font-size: 3rem;
+  text-shadow: 0 1px 0px #e4509a, 1px 0 0px #7bc9ec, 1px 2px 1px #e4509a,
+    2px 1px 1px #7bc9ec, 2px 3px 2px #e4509a, 3px 2px 2px #7bc9ec,
+    3px 4px 2px #e4509a, 4px 3px 3px #7bc9ec, 4px 5px 3px #e4509a,
+    5px 4px 2px #7bc9ec, 5px 6px 2px #e4509a, 6px 5px 2px #7bc9ec,
+    6px 7px 1px #e4509a, 7px 6px 1px #7bc9ec, 7px 8px 0px #e4509a,
+    8px 7px 0px #7bc9ec;
+}
+
+.h3 {
+  font-size: 2rem;
+}
+
+.tweet-count {
+  color: #e4509a;
+}
+
+.image-container {
+  margin-top: 4rem;
+}
+.triangle {
+  position: fixed;
+  width: 0;
+  height: 0;
+  border-bottom: 300px solid #008581;
+  border-right: 300px solid transparent;
+  margin-left: 9rem;
+  bottom: 9rem;
+}
+.image {
+  z-index: 2;
+}
+
+.input {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+}
+
+.search-button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #e4509a;
+  color: #ffdae8;
+  padding: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: large;
+  border: none;
+}
+
+.search-button:hover {
+  background-color: #ffdae8;
+  color: #e4509a;
+}
+
+.input {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  width: 20rem;
+  height: 2rem;
+  font-size: large;
+}
