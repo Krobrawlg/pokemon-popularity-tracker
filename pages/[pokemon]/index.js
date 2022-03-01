@@ -120,28 +120,29 @@ ${pokemonName.toLowerCase()}`);
           <h1 className={`${styles.h1} ${styles["h1-right"]}`}>
             Pick a Pocket Monster to Compare
           </h1>
-          {!targetPokemon && (
-            <form
-              className={styles["pokemon-selector"]}
-              onSubmit={selectPokemonHandler}
-            >
-              <input
-                className={styles.input}
-                id="pokemon-select"
-                list="pokemon"
-                ref={pokeSelection}
-              />
-              <datalist className={styles.dataList} id="pokemon">
-                {optionsDisplay}
-              </datalist>
-              <button className={styles["search-button"]}>
-                Engage Popularity Tracker
-              </button>
-            </form>
-          )}
+          {/* {!targetPokemon && ( */}
+          <form
+            className={styles["pokemon-selector"]}
+            onSubmit={selectPokemonHandler}
+          >
+            <input
+              className={styles.input}
+              id="pokemon-select"
+              list="pokemon"
+              ref={pokeSelection}
+            />
+            <datalist className={styles.dataList} id="pokemon">
+              {optionsDisplay}
+            </datalist>
+            <button className={styles["search-button"]}>
+              Engage Popularity Tracker
+            </button>
+          </form>
+          {tweetCount2 && <h2>{tweetCount2} tweets in the past week.</h2>}
           {imageSrc2 && (
             <>
-              {tweetCount2 && <h2>{tweetCount2} tweets in the past week.</h2>}
+              <div className={`${styles.triangle} ${styles.pink}`} />
+
               <Image
                 src={imageSrc2}
                 alt={`a picture of ${targetPokemon}`}

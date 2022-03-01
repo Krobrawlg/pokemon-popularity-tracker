@@ -58,6 +58,12 @@
   margin-left: 9rem;
   bottom: 9rem;
 }
+
+.triangle.pink {
+  border-bottom: 300px solid #e4509a;
+  border-right: none;
+  border-left: 300px solid transparent;
+}
 .image {
   z-index: 2;
 }
